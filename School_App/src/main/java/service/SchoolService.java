@@ -30,11 +30,11 @@ public class SchoolService {
         classroomDao.add(classroom);
     }
 
-    public void deleteClassroom(long id) {
+    public void deleteClassroom(int id) {
         classroomDao.delete(id);
     }
 
-    public Classroom getClassroomById(Long id) {
+    public Classroom getClassroomById(int id) {
         return classroomDao.getById(id);
     }
 
@@ -51,11 +51,11 @@ public class SchoolService {
         departmentDAO.add(department);
     }
 
-    public void deleteDepartment(long id) {
+    public void deleteDepartment(int id) {
         departmentDAO.delete(id);
     }
 
-    public Department getDepartmentById(Long id) {
+    public Department getDepartmentById(int id) {
         return departmentDAO.getById(id);
     }
 
@@ -74,11 +74,11 @@ public class SchoolService {
         studentDAO.add(student);
     }
 
-    public void deleteStudent(long id) {
+    public void deleteStudent(int id) {
         studentDAO.delete(id);
     }
 
-    public Student getStudentById(Long id) {
+    public Student getStudentById(int id) {
         return studentDAO.getById(id);
     }
 
@@ -99,7 +99,7 @@ public class SchoolService {
     }
 
 
-    public Grade getGradeById(Long id) {
+    public Grade getGradeById(int id) {
         return gradeDAO.getById(id);
     }
 
@@ -117,7 +117,7 @@ public class SchoolService {
     }
 
 
-    public Subject getSubjectById(Long id) {
+    public Subject getSubjectById(int id) {
         return subjectDAO.getById(id);
     }
 
@@ -134,7 +134,7 @@ public class SchoolService {
     }
 
 
-    public Schedule getScheduleById(Long id) {
+    public Schedule getScheduleById(int id) {
         return scheduleDAO.getById(id);
     }
 
@@ -154,7 +154,7 @@ public class SchoolService {
     }
 
 
-    public Teacher getTeacherById(Long id) {
+    public Teacher getTeacherById(int id) {
         return teacherDAO.getById(id);
     }
 

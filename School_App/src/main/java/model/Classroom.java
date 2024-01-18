@@ -15,7 +15,8 @@ public class Classroom {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id_class")
+    private int id;
 
     private String name;
 
@@ -25,7 +26,7 @@ public class Classroom {
     @JoinColumn(name = "id_dep")
     private Department department;
 
-    @OneToMany(mappedBy = "classroom")
+    @OneToMany(mappedBy = "classroom", cascade = CascadeType.ALL)
     private List<Student> studentList = new ArrayList<>();
 
     @ManyToMany(mappedBy = "classrooms")

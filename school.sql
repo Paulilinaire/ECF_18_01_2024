@@ -1,6 +1,6 @@
-CREATE DATABASE school_db;
--- DROP DATABASE schooL_db;
-USE school_db;
+CREATE DATABASE school;
+-- DROP DATABASE schooL;
+USE school;
 
 CREATE TABLE department(
    id_dep INT NOT NULL AUTO_INCREMENT,
@@ -64,9 +64,10 @@ CREATE TABLE grade(
    id_s INT NOT NULL,
    id_sub INT NOT NULL,
    PRIMARY KEY(id_grade),
-   FOREIGN KEY(id_s) REFERENCES student(id_s),
+   FOREIGN KEY(id_s) REFERENCES student(id_s), 
    FOREIGN KEY(id_sub) REFERENCES subject(id_sub)
 );
+
 
 CREATE TABLE teacher_subject(
    id_t INT,
@@ -91,4 +92,3 @@ CREATE TABLE subject_schedule(
    FOREIGN KEY(id_sub) REFERENCES subject(id_sub),
    FOREIGN KEY(id_sch) REFERENCES schedule(id_sch)
 );
-

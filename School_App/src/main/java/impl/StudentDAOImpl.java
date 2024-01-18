@@ -43,7 +43,7 @@ public class StudentDAOImpl implements IBaseDAO<Student> {
     }
 
     @Override
-    public void delete(long id) {
+    public void delete(int id) {
         Session session = null;
         Transaction transaction = null;
         try {
@@ -64,7 +64,7 @@ public class StudentDAOImpl implements IBaseDAO<Student> {
     }
 
     @Override
-    public Student getById(long id) {
+    public Student getById(int id) {
         Student student = null;
         try (Session session = sessionFactory.openSession()) {
             student = session.get(Student.class, id);

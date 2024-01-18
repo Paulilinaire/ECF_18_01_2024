@@ -1,9 +1,9 @@
 package model;
 
-import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -15,7 +15,8 @@ public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id_s")
+    private int id;
 
     @Column(nullable = false)
     private String lastName;
@@ -25,13 +26,14 @@ public class Student {
 
     private LocalDate birthDate;
 
+    @Column(nullable = false, unique = true)
     private String email;
 
     @ManyToOne
     @JoinColumn(name = "id_class")
     private Classroom classroom;
 
-    @OneToMany (mappedBy = "student")
+    @OneToMany(mappedBy = "student")
     private List<Grade> grades;
 
     public Student() {

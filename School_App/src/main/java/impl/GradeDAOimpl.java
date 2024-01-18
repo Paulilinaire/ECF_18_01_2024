@@ -43,11 +43,11 @@ public class GradeDAOimpl implements IBaseDAO<Grade> {
     }
 
     @Override
-    public void delete(long id) {
+    public void delete(int id) {
     }
 
     @Override
-    public Grade getById(long id) {
+    public Grade getById(int id) {
         Grade grade = null;
         try (Session session = sessionFactory.openSession()) {
             grade = session.get(Grade.class, id);

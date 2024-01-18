@@ -43,11 +43,11 @@ public class ScheduleDAOImpl implements IBaseDAO<Schedule> {
     }
 
     @Override
-    public void delete(long id) {
+    public void delete(int id) {
     }
 
     @Override
-    public Schedule getById(long id) {
+    public Schedule getById(int id) {
         Schedule schedule = null;
         try (Session session = sessionFactory.openSession()) {
             schedule = session.get(Schedule.class, id);

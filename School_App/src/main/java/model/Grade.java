@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Getter
 @Setter
@@ -12,24 +13,25 @@ import javax.persistence.*;
 public class Grade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id_grade")
+    private int id;
 
-    private int value;
+    private BigDecimal value;
 
     private String comment;
 
     @ManyToOne
-    @JoinColumn(name = "id_student")
+    @JoinColumn(name = "id_s")
     private Student student;
 
     @ManyToOne
-    @JoinColumn(name = "id_subject")
+    @JoinColumn(name = "id_sub")
     private Subject subject;
 
     public Grade() {
     }
 
-    public Grade(int value, String comment, Student student, Subject subject) {
+    public Grade(BigDecimal value, String comment, Student student, Subject subject) {
         this.value = value;
         this.comment = comment;
         this.student = student;

@@ -9,6 +9,7 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import service.SchoolService;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -181,7 +182,7 @@ public class SchoolAppController {
         String level = scanner.nextLine();
 
         System.out.println("Saisir l'id du département auquel appartient l'enseignant : ");
-        long id = scanner.nextLong();
+        int id = scanner.nextInt();
 
         Department department = schoolService.getDepartmentById(id);
 
@@ -256,18 +257,18 @@ public class SchoolAppController {
 
     private void createGrade() {
         System.out.println("Saisir la note sur 20: ");
-        int value = scanner.nextInt();
+        BigDecimal value = scanner.nextBigDecimal();
         scanner.nextLine();
 
         System.out.println("Saisir le commentaire de la note : ");
         String comment = scanner.nextLine();
 
         System.out.println("Saisir l'ID de l'étudiant pour lequel vous ajoutez la note : ");
-        Long studentId = scanner.nextLong();
+        int studentId = scanner.nextInt();
         scanner.nextLine();
 
         System.out.println("Saisir l'ID de la matière pour lequel vous ajoutez la note : ");
-        Long subjectId = scanner.nextLong();
+        int subjectId = scanner.nextInt();
         scanner.nextLine();
 
 

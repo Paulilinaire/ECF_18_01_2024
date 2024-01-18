@@ -43,7 +43,7 @@ public class DepartmentDAOImpl implements IBaseDAO<Department> {
     }
 
     @Override
-    public void delete(long id) {
+    public void delete(int id) {
         Session session = null;
         Transaction transaction = null;
         try {
@@ -64,7 +64,7 @@ public class DepartmentDAOImpl implements IBaseDAO<Department> {
     }
 
     @Override
-    public Department getById(long id) {
+    public Department getById(int id) {
         Department department = null;
         try (Session session = sessionFactory.openSession()) {
             department = session.get(Department.class, id);

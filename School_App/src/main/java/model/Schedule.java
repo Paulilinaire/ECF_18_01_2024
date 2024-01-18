@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,27 +17,27 @@ public class Schedule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id_sch")
+    private int id;
 
     private LocalDate date;
 
-    private LocalDate hour;
+    private LocalTime hour;
 
     @ManyToMany
     @JoinTable(name = "subject_schedule",
-            joinColumns = @JoinColumn(name = "id_sub"),
-            inverseJoinColumns = @JoinColumn(name = "id_sch"))
-    private List<Subject> subjects =new ArrayList<>();
+            joinColumns = @JoinColumn(name = "id_sch"),
+            inverseJoinColumns = @JoinColumn(name = "id_sub"))
+    private List<Subject> subjects = new ArrayList<>();
 
     public Schedule() {
     }
 
-    public Schedule(LocalDate date, LocalDate hour, List<Subject> subjects) {
+    public Schedule(LocalDate date, LocalTime hour, List<Subject> subjects) {
         this.date = date;
         this.hour = hour;
         this.subjects = subjects;
     }
-
 
     @Override
     public String toString() {

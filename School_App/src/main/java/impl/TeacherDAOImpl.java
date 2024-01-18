@@ -43,11 +43,11 @@ public class TeacherDAOImpl implements IBaseDAO<Teacher> {
     }
 
     @Override
-    public void delete(long id) {
+    public void delete(int id) {
     }
 
     @Override
-    public Teacher getById(long id) {
+    public Teacher getById(int id) {
         Teacher teacher = null;
         try (Session session = sessionFactory.openSession()) {
             teacher = session.get(Teacher.class, id);

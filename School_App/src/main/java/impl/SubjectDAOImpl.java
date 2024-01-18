@@ -43,11 +43,11 @@ public class SubjectDAOImpl implements IBaseDAO<Subject> {
     }
 
     @Override
-    public void delete(long id) {
+    public void delete(int id) {
     }
 
     @Override
-    public Subject getById(long id) {
+    public Subject getById(int id) {
         Subject subject = null;
         try (Session session = sessionFactory.openSession()) {
             subject = session.get(Subject.class, id);

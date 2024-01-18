@@ -15,7 +15,7 @@ public class Teacher {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     @Column(nullable = false)
     private String lastName;
@@ -32,20 +32,20 @@ public class Teacher {
     private boolean isHeadDepartment;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_dep")
+    @JoinColumn(name = "id_t")
     private Department department;
 
     @ManyToMany
     @JoinTable(name = "teacher_subject",
-            joinColumns = @JoinColumn(name = "id_sub"),
-            inverseJoinColumns = @JoinColumn(name = "id_t"))
+            joinColumns = @JoinColumn(name = "id_t"),
+            inverseJoinColumns = @JoinColumn(name = "id_sub"))
     private List<Subject> subjects =new ArrayList<>();
 
     @ManyToMany
-    @JoinTable(name = "teacher_class",
-            joinColumns = @JoinColumn(name = "id_class"),
-            inverseJoinColumns = @JoinColumn(name = "id_t"))
-    private List<Classroom> classrooms =new ArrayList<>();
+    @JoinTable(name = "teacher_classroom",
+            joinColumns = @JoinColumn(name = "id_t"),
+            inverseJoinColumns = @JoinColumn(name = "id_class"))
+    private List<Classroom> classrooms = new ArrayList<>();
 
 
     public Teacher() {

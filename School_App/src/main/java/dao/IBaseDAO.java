@@ -6,9 +6,9 @@ public interface IBaseDAO<T> {
 
     public void add(T element);
 
-    public void delete(long id);
+    public void delete(int id);
 
-    public T getById(long id);
+    public T getById(int id);
 
     public List<T> getAll();
 

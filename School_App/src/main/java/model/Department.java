@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -14,15 +15,16 @@ public class Department {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id_dep")
+    private int id;
 
     private String name;
 
-    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
-    private List<Teacher> teachers;
+    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Teacher> teachers = new ArrayList<>();
 
-    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
-    private List<Classroom> classrooms;
+    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Classroom> classrooms = new ArrayList<>();
 
     public Department() {
     }
