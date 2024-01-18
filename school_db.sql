@@ -60,7 +60,7 @@ CREATE TABLE teacher(
 CREATE TABLE grade(
    id_grade INT NOT NULL AUTO_INCREMENT,
    value_g DECIMAL(4,2),
-   comment_g VARCHAR(100),
+   comment_g VARCHAR(200),
    id_s INT NOT NULL,
    id_sub INT NOT NULL,
    PRIMARY KEY(id_grade),
