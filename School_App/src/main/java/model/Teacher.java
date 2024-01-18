@@ -17,19 +17,21 @@ public class Teacher {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 3)
+    @Column(nullable = false)
     private String lastName;
 
-    @Column(nullable = false, length = 3)
+    @Column(nullable = false)
     private String firstName;
 
     private int age;
+
+    private String level;
 
     private boolean isFormTeacher;
 
     private boolean isHeadDepartment;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_dep")
     private Department department;
 
@@ -43,9 +45,32 @@ public class Teacher {
     @JoinTable(name = "teacher_class",
             joinColumns = @JoinColumn(name = "id_class"),
             inverseJoinColumns = @JoinColumn(name = "id_t"))
-    private List<Class> classes =new ArrayList<>();
+    private List<Classroom> classrooms =new ArrayList<>();
 
 
     public Teacher() {
+    }
+
+    public Teacher(String lastName, String firstName, int age, String level, boolean isFormTeacher, boolean isHeadDepartment, Department department) {
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.age = age;
+        this.level = level;
+        this.isFormTeacher = isFormTeacher;
+        this.isHeadDepartment = isHeadDepartment;
+        this.department = department;
+    }
+
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "id=" + id +
+                ", lastName='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", age=" + age +
+                ", isFormTeacher=" + isFormTeacher +
+                ", isHeadDepartment=" + isHeadDepartment +
+                ", department=" + department +
+                '}';
     }
 }

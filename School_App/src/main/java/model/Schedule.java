@@ -30,4 +30,21 @@ public class Schedule {
 
     public Schedule() {
     }
+
+    public Schedule(LocalDate date, LocalDate hour, List<Subject> subjects) {
+        this.date = date;
+        this.hour = hour;
+        this.subjects = subjects;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Schedule{" +
+                "id=" + id +
+                ", date=" + date +
+                ", hour=" + hour +
+                ", subjects=" + subjects +
+                '}';
+    }
 }

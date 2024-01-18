@@ -17,10 +17,10 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 3)
+    @Column(nullable = false)
     private String lastName;
 
-    @Column(nullable = false, length = 3)
+    @Column(nullable = false)
     private String firstName;
 
     private LocalDate birthDate;
@@ -29,11 +29,29 @@ public class Student {
 
     @ManyToOne
     @JoinColumn(name = "id_class")
-    private Class studentClass;
+    private Classroom classroom;
 
     @OneToMany (mappedBy = "student")
     private List<Grade> grades;
 
     public Student() {
+    }
+
+    public Student(String lastName, String firstName, LocalDate birthDate, String email) {
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.birthDate = birthDate;
+        this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", lastName='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", birthDate=" + birthDate +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

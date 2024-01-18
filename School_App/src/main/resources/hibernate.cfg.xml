@@ -7,10 +7,14 @@
 
     <session-factory>
 
-        <mapping class="model.Product"/>
-        <mapping class="model.Image"/>
-        <mapping class="model.Comment"/>
-        <mapping class="model.Order"/>
+        <mapping class="model.Student"/>
+        <mapping class="model.Department"/>
+        <mapping class="model.Grade"/>
+        <mapping class="model.Schedule"/>
+        <mapping class="model.Classroom"/>
+        <mapping class="model.Teacher"/>
+        <mapping class="model.Subject"/>
+
 
     </session-factory>
 

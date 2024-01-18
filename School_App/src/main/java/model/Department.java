@@ -18,9 +18,24 @@ public class Department {
 
     private String name;
 
-    @OneToMany(mappedBy = "department")
+    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
     private List<Teacher> teachers;
 
+    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
+    private List<Classroom> classrooms;
+
     public Department() {
+    }
+
+    public Department(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Department{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
