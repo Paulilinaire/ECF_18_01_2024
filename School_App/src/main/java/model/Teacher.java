@@ -15,6 +15,7 @@ public class Teacher {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_t", nullable = false)
     private int id;
 
     @Column(nullable = false)
@@ -31,8 +32,8 @@ public class Teacher {
 
     private boolean isHeadDepartment;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_t")
+    @ManyToOne
+    @JoinColumn(name = "id_dep")
     private Department department;
 
     @ManyToMany
@@ -59,6 +60,22 @@ public class Teacher {
         this.isFormTeacher = isFormTeacher;
         this.isHeadDepartment = isHeadDepartment;
         this.department = department;
+        this.classrooms = new ArrayList<>();
+        this.subjects = new ArrayList<>();
+    }
+
+    public void addClassroom(Classroom classroom) {
+        if (classrooms == null) {
+            classrooms = new ArrayList<>();
+        }
+        classrooms.add(classroom);
+    }
+
+    public void addSubject(Subject subject) {
+        if (subjects == null) {
+            subjects = new ArrayList<>();
+        }
+        subjects.add(subject);
     }
 
     @Override

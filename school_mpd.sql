@@ -21,7 +21,7 @@ CREATE TABLE classroom(
    id_class INT NOT NULL AUTO_INCREMENT,
    name_class VARCHAR(50),
    level_class VARCHAR(50),
-   id_dep INT NOT NULL,
+   id_dep INT,
    PRIMARY KEY(id_class),
    FOREIGN KEY(id_dep) REFERENCES department(id_dep)
 );
@@ -39,7 +39,7 @@ CREATE TABLE student(
    firstName_s VARCHAR(50),
    birth_date_s DATE,
    email_s VARCHAR(100),
-   id_class INT NOT NULL,
+   id_class INT,
    PRIMARY KEY(id_s),
    FOREIGN KEY(id_class) REFERENCES classroom(id_class)
 );
@@ -48,11 +48,11 @@ CREATE TABLE teacher(
    id_t INT NOT NULL AUTO_INCREMENT,
    lastName_t VARCHAR(50),
    firstName_t VARCHAR(50),
-   age_t INT,
+   age_t INT CHECK (age_t >= 18),
    level_t VARCHAR(50),
    is_form_teacher BOOLEAN,
    is_head_department BOOLEAN,
-   id_dep INT NOT NULL,
+   id_dep INT,
    PRIMARY KEY(id_t),
    FOREIGN KEY(id_dep) REFERENCES department(id_dep)
 );
@@ -61,8 +61,8 @@ CREATE TABLE grade(
    id_grade INT NOT NULL AUTO_INCREMENT,
    value_g DECIMAL(4,2),
    comment_g VARCHAR(200),
-   id_s INT NOT NULL,
-   id_sub INT NOT NULL,
+   id_s INT,
+   id_sub INT,
    PRIMARY KEY(id_grade),
    FOREIGN KEY(id_s) REFERENCES student(id_s), 
    FOREIGN KEY(id_sub) REFERENCES subject(id_sub)

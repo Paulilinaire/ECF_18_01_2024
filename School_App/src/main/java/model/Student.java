@@ -15,7 +15,7 @@ public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_s")
+    @Column(name = "id_s", nullable = false)
     private int id;
 
     @Column(nullable = false)
@@ -33,7 +33,11 @@ public class Student {
     @JoinColumn(name = "id_class")
     private Classroom classroom;
 
-    @OneToMany(mappedBy = "student")
+    @ManyToOne
+    @JoinColumn(name = "id_sch")
+    private Schedule schedule;
+
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Grade> grades;
 
     public Student() {

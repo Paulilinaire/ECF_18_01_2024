@@ -1,6 +1,7 @@
 package impl;
 
 import dao.IBaseDAO;
+import model.Student;
 import model.Teacher;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -67,6 +68,28 @@ public class TeacherDAOImpl implements IBaseDAO<Teacher> {
             e.printStackTrace();
         }
         return teacherList;
+    }
+
+    public boolean update(Teacher teacher) {
+        Session session = null;
+        Transaction transaction = null;
+        try {
+            session = sessionFactory.openSession();
+            transaction = session.beginTransaction();
+            session.update(teacher);
+            transaction.commit();
+            return true;
+
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+
+        }
+        return false;
     }
 
     @Override

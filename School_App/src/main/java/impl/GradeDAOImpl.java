@@ -12,11 +12,11 @@ import org.hibernate.query.Query;
 
 import java.util.List;
 
-public class GradeDAOimpl implements IBaseDAO<Grade> {
+public class GradeDAOImpl implements IBaseDAO<Grade> {
 
     private final SessionFactory sessionFactory;
 
-    public GradeDAOimpl() {
+    public GradeDAOImpl() {
         StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
         this.sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
     }

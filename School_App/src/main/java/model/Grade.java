@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 public class Grade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_grade")
+    @Column(name = "id_grade", nullable = false)
     private int id;
 
     private BigDecimal value;

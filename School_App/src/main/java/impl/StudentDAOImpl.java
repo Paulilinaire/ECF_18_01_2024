@@ -10,6 +10,7 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.query.Query;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StudentDAOImpl implements IBaseDAO<Student> {
@@ -85,6 +86,60 @@ public class StudentDAOImpl implements IBaseDAO<Student> {
         }
         return studentList;
     }
+
+    public boolean update(Student student) {
+        Session session = null;
+        Transaction transaction = null;
+        try {
+            session = sessionFactory.openSession();
+            transaction = session.beginTransaction();
+            session.update(student);
+            transaction.commit();
+            return true;
+
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+
+        }
+        return false;
+    }
+
+    public List<Student> getDepStudents(String departmentName) {
+        Session session = null;
+        List<Student> studentList = new ArrayList<>();
+
+        try {
+            session = sessionFactory.openSession();
+
+            // Assuming department is a property in the Classroom entity
+            Query<Student> departmentStudentsQuery = session.createQuery(
+                    "select distinct student " +
+                            "from Classroom classroom " +
+                            "join classroom.students student " +
+                            "where classroom.department.name = :departmentName", Student.class
+            );
+            departmentStudentsQuery.setParameter("departmentName", departmentName);
+
+            studentList = departmentStudentsQuery.list();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
+
+        return studentList;
+    }
+
+
+
 
     @Override
     public void close() {

@@ -17,18 +17,23 @@ public class Schedule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_sch")
+    @Column(name = "id_sch", nullable = false)
     private int id;
 
     private LocalDate date;
 
     private LocalTime hour;
 
+    @OneToMany (mappedBy = "schedule")
+    private List<Student> studentList;
+
     @ManyToMany
     @JoinTable(name = "subject_schedule",
-            joinColumns = @JoinColumn(name = "id_sch"),
-            inverseJoinColumns = @JoinColumn(name = "id_sub"))
+            joinColumns = @JoinColumn(name = "id_sub"),
+            inverseJoinColumns = @JoinColumn(name = "id_sch"))
     private List<Subject> subjects = new ArrayList<>();
+
+
 
     public Schedule() {
     }

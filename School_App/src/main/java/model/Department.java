@@ -15,7 +15,7 @@ public class Department {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_dep")
+    @Column(name = "id_dep", nullable = false)
     private int id;
 
     private String name;
@@ -31,7 +31,10 @@ public class Department {
 
     public Department(String name) {
         this.name = name;
+        this.teachers = new ArrayList<>();
+        this.classrooms = new ArrayList<>();
     }
+
 
     @Override
     public String toString() {

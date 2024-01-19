@@ -15,7 +15,7 @@ public class Subject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_sub")
+    @Column(name = "id_sub", nullable = false)
     private int id;
 
     private String title;
@@ -32,7 +32,7 @@ public class Subject {
     @ManyToMany(mappedBy = "subjects")
     private List<Teacher> teachers = new ArrayList<>();
 
-    @OneToMany (mappedBy = "subject")
+    @OneToMany (mappedBy = "subject", cascade =CascadeType.ALL, orphanRemoval = true)
     private List<Grade> grades;
 
     public Subject() {

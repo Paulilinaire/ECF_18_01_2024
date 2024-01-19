@@ -1,6 +1,5 @@
 package service;
 
-import dao.IBaseDAO;
 import impl.*;
 import model.*;
 
@@ -9,14 +8,14 @@ import java.util.List;
 public class SchoolService {
         private ClassroomDAOImpl classroomDao;
         private DepartmentDAOImpl departmentDAO;
-        private GradeDAOimpl gradeDAO;
+        private GradeDAOImpl gradeDAO;
         private ScheduleDAOImpl scheduleDAO;
         private StudentDAOImpl studentDAO;
         private SubjectDAOImpl subjectDAO;
         private TeacherDAOImpl teacherDAO;
 
 
-    public SchoolService(ClassroomDAOImpl classroomDao, DepartmentDAOImpl departmentDAO, GradeDAOimpl gradeDAO, ScheduleDAOImpl scheduleDAO, StudentDAOImpl studentDAO, SubjectDAOImpl subjectDAO, TeacherDAOImpl teacherDAO) {
+    public SchoolService(ClassroomDAOImpl classroomDao, DepartmentDAOImpl departmentDAO, GradeDAOImpl gradeDAO, ScheduleDAOImpl scheduleDAO, StudentDAOImpl studentDAO, SubjectDAOImpl subjectDAO, TeacherDAOImpl teacherDAO) {
         this.classroomDao = classroomDao;
         this.departmentDAO = departmentDAO;
         this.gradeDAO = gradeDAO;
@@ -163,6 +162,20 @@ public class SchoolService {
         return teacherDAO.getAll();
     }
 
+
+
+    public void updateStudent(Student student) {
+        studentDAO.update(student);
+    }
+
+    public void updateTeacher(Teacher teacher) {
+        teacherDAO.update(teacher);
+
+    }
+
+    public List<Student> getAllStudentsInDepartment(String departmentName) {
+        return studentDAO.getDepStudents(departmentName);
+    }
 
 
 
