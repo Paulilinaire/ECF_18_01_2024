@@ -1,4 +1,4 @@
-# Etablissement_scolaire_Hibernate_MySQL
+# Gestion_Etablissement_scolaire_Hibernate_MySQL
 
 ## ECF - jeudi 18/01/2024
 
